@@ -13,9 +13,9 @@ export class AppComponent {
   public photos: Photo[] = []
   constructor(private _nasaService: NasaService) { }
 
-  handleDateChange($event: MatDatepickerInputEvent<any>) {
+  handleDateChange(datePickerInput: MatDatepickerInputEvent<any>) {
     this.photos = []
-    this._nasaService.getPhotos(new Date()).subscribe(photos => {
+    this._nasaService.getPhotos(datePickerInput.value).subscribe(photos => {
       this.photos = photos
     })
 

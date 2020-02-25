@@ -13,8 +13,9 @@ export class NasaService {
   constructor(private _http: HttpClient) { }
 
   getPhotos(date: Date): Observable<Photo[]> {
+    let formattedDate = `${date.getFullYear()}-${date.getMonth()}-${date.getDate()}`
     let params = {
-      earth_date: '2015-6-3',
+      earth_date: formattedDate,
       api_key: this.apiKey
     }
     return this._http.get<{ photos: [] } | null>(this.url, { params })
