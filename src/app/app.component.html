@@ -8,3 +8,6 @@
   <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
   <mat-datepicker #picker></mat-datepicker>
 </mat-form-field>
+<div>
+  <img *ngFor="let photo of photos" [src]="photo.imgSrc" />
+</div>

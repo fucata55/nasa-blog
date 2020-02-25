@@ -1,6 +1,7 @@
 import { Component } from '@angular/core';
 import { MatDatepickerInputEvent } from '@angular/material/datepicker';
 import { NasaService } from './nasa.service';
+import { Photo } from './photo';
 
 @Component({
   selector: 'app-root',
@@ -9,13 +10,13 @@ import { NasaService } from './nasa.service';
 })
 export class AppComponent {
   title = 'nasa-blog';
-
+  public photos: Photo[] = []
   constructor(private _nasaService: NasaService) { }
 
   handleDateChange($event: MatDatepickerInputEvent<any>) {
-    console.log($event)
-    this._nasaService.getPhotos(new Date()).subscribe(res => {
-      console.log(res)
+    this.photos = []
+    this._nasaService.getPhotos(new Date()).subscribe(photos => {
+      this.photos = photos
     })
 
   }
